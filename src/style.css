@@ -1,0 +1,220 @@
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url(../public/SourceSansPro-Regular.otf);
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url(/Mulish-VariableFont_wght.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Mulish", "Source Sans Pro", "Franklin Gothic Medium",
+    "Arial Narrow", Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+hr {
+  width: 100%;
+
+  border: 1px solid #efefef;
+  border-radius: 15px;
+}
+
+input {
+  height: 48px;
+  width: 340px;
+
+  background-color: #fff;
+  color: #000;
+
+  border: 1px solid #4361ee;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+input:focus {
+  outline: 3px solid #abc4ff;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  border: 1px solid #616161;
+}
+
+a,
+p {
+  font-size: 18px;
+}
+
+a {
+  color: #4361ee;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.simple-dialog {
+  height: auto;
+  width: auto;
+
+  place-self: center;
+
+  background-color: #fff;
+
+  border: 1px solid #efefef;
+  border-radius: 15px;
+}
+
+.simple-dialog:focus {
+  outline: none;
+}
+
+/*   Open state of the dialog  */
+dialog[open] {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/*   Closed state of the dialog   */
+dialog {
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.95);
+
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out,
+    overlay 0.2s ease-out allow-discrete, display 0.2s ease-out allow-discrete;
+}
+
+/*   Before-open state  */
+/* Needs to be after the previous dialog[open] rule to take effect,
+    as the specificity is the same */
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+/* Transition the :backdrop when the dialog modal is promoted to the top layer */
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0%);
+  transition: display 0.2s allow-discrete, overlay 0.2s allow-discrete,
+    background-color 0.2s;
+}
+
+dialog[open]::backdrop {
+  background-color: rgb(0 0 0 / 25%);
+}
+
+/* This starting-style rule cannot be nested inside the above selector
+because the nesting selector cannot represent pseudo-elements. */
+
+@starting-style {
+  dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+  }
+}
+
+dialog::backdrop {
+  background: rgb(0, 81, 156);
+  background: rgb(0, 0, 0, 0.25);
+  background-color: rgb(0, 0, 0, 0.25);
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d6d6d6;
+
+  border-radius: 5px;
+  border: 1px solid #d6d6d6;
+}
+
+.max-width {
+  max-width: 85ch;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
